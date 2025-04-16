@@ -2,6 +2,7 @@ import 'dotenv/config'
 import cors from 'cors'
 import express from 'express'
 import connectDB from './config/db.js';
+import userRouter from './routes/userroutes.js';
 
 const PORT=4000 || process.env.PORT
 
@@ -11,6 +12,8 @@ await connectDB()
 
 
 app.use(express.json());
+
+app.use('/api/user',userRouter);
 
 
 app.get('/',(req,res)=>{
